@@ -7,7 +7,7 @@ declare module 'dsteem/steem/asset' {
 	/**
 	 * Asset symbol string.
 	 */
-	export type AssetSymbol = 'STEEM' | 'VESTS' | 'SBD';
+	export type AssetSymbol = 'ESH' | 'VESTS' | 'EBD';
 	/**
 	 * Class representing a steem asset, e.g. `1.000 STEEM` or `12.112233 VESTS`.
 	 */
@@ -2082,7 +2082,7 @@ declare module 'dsteem/client' {
 	/**
 	 * Main steem network address prefix.
 	 */
-	export const DEFAULT_ADDRESS_PREFIX = "STM";
+	export const DEFAULT_ADDRESS_PREFIX = "ESH";
 	/**
 	 * RPC Client options
 	 * ------------------
