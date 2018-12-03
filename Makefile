@@ -10,7 +10,7 @@ lib: $(SRC_FILES) node_modules
 	tsc -p tsconfig.json --outDir lib && \
 	V=`node -p 'require("./package.json").version'` && \
 	sed -e "s}require('./../package.json').version}'$${V}'}" \
-	-i '' lib/version.js && touch lib
+	-i lib/version.js && touch lib
 
 dist/%.js: lib
 	browserify $(filter-out $<,$^) --debug --full-paths \
@@ -26,7 +26,7 @@ dist/dsteem.js: src/index-browser.ts
 
 dist/dsteem.d.ts: $(SRC_FILES) node_modules
 	dts-generator --name dsteem --project . --out dist/dsteem.d.ts
-	sed -e "s@'dsteem/index'@'dsteem'@g" -i '' dist/dsteem.d.ts
+	sed -e "s@'dsteem/index'@'dsteem'@g" -i dist/dsteem.d.ts
 
 dist/%.gz: dist/dsteem.js
 	gzip --best --keep --force $(basename $@)
@@ -64,7 +64,7 @@ node_modules:
 
 docs: $(SRC_FILES) node_modules
 	typedoc --gitRevision master --target ES6 --mode file --out docs src
-	find docs -name "*.html" | xargs sed -i '' 's~$(shell pwd)~.~g'
+	find docs -name "*.html" | xargs sed -i 's~$(shell pwd)~.~g'
 	echo "Served at <https://jnordberg.github.io/dsteem/>" > docs/README.md
 	touch docs
 

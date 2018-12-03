@@ -209,7 +209,7 @@ export class BroadcastAPI {
                     creationFee,
                 )
             } else {
-                fee = Asset.from(fee || creationFee, 'STEEM')
+                fee = Asset.from(fee || creationFee, 'ESH')
                 delegation = Asset.max(
                     targetDelegation.subtract(sharePrice.convert(fee.multiply(ratio))),
                     Asset.from(0, 'VESTS'),
@@ -220,7 +220,7 @@ export class BroadcastAPI {
             active, creator,
             delegation: Asset.from(delegation, 'VESTS'),
             extensions: [],
-            fee: Asset.from(fee, 'STEEM'),
+            fee: Asset.from(fee, 'ESH'),
             json_metadata: metadata ? JSON.stringify(metadata) : '',
             memo_key,
             new_account_name: username,
